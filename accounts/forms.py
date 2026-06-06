@@ -17,24 +17,24 @@ class CustomRegistrationForm(forms.Form):
     )
 
     code = forms.CharField(
-        label='Code',
+        label='password',
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
         help_text='Enter a 4-digit numeric code.',
         validators=[
             RegexValidator(
                 regex=r'^\d{4}$',
-                message='Code must be exactly 4 digits.',
-                code='invalid_code'
+                message='Password must be exactly 4 digits.',
+                code='invalid_password'
             )
         ]
     )
 
     code_confirmation = forms.CharField(
-        label='Code confirmation',
+        label='Password confirmation',
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
-        help_text='Enter the same 4-digit code again.'
+        help_text='Enter the same 4-digit password again.'
     )
 
     def clean_username(self):
