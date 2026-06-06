@@ -17,10 +17,10 @@ class CustomRegistrationForm(forms.Form):
     )
 
     code = forms.CharField(
-        label='password',
+        label='Password',  # 1. កែពី 'password' ទៅជា 'Password' (អក្សរ P ធំ)
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
-        help_text='Enter a 4-digit numeric code.',
+        help_text='Enter a 4-digit numeric password.', # 2. កែពាក្យ code ទៅ password
         validators=[
             RegexValidator(
                 regex=r'^\d{4}$',
@@ -48,8 +48,9 @@ class CustomRegistrationForm(forms.Form):
         code = cleaned_data.get('code')
         code_confirmation = cleaned_data.get('code_confirmation')
 
+        # 3. កែពាក្យ 'code fields' ទៅជា 'password fields' ក្នុងសារព្រមាន (Error Message)
         if code and code_confirmation and code != code_confirmation:
-            raise forms.ValidationError('The two code fields didn\'t match.')
+            raise forms.ValidationError('The two password fields didn\'t match.')
 
         return cleaned_data
 
