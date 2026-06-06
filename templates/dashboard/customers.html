@@ -215,18 +215,17 @@ body {
       <div class="table-wrap">
         <table class="table">
           <thead>
-            <tr><th>#</th><th>Username</th><th>Email</th><th>Joined</th></tr>
+            <tr><th>#</th><th>Username</th><th>Joined</th></tr>
           </thead>
           <tbody>
             {% for u in customers %}
             <tr>
               <td>{{ forloop.counter }}</td>
               <td>{{ u.username }}</td>
-              <td>{{ u.email }}</td>
               <td>{{ u.date_joined|date:"M d, Y" }}</td>
             </tr>
             {% empty %}
-            <tr><td colspan="4" class="text-center">No customers</td></tr>
+            <tr><td colspan="3" class="text-center">No customers</td></tr>
             {% endfor %}
           </tbody>
         </table>
